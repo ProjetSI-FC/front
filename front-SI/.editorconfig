@@ -1,3 +1,6 @@
+## EDITORCONFIG sert à que tout le monde ait la même esthétique de code ##
+# Exemple : Un indent de même taille, la même policen même alphabet etc ... #
+
 # Editor configuration, see https://editorconfig.org
 root = true
 
