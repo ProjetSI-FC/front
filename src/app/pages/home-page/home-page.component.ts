@@ -11,7 +11,7 @@ import { Keyword } from 'src/app/shared-component/keyword';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  keyWords = new FormControl();
+  keywordControl = new FormControl();
 
   keywordList: Keyword[] = [new Keyword("euro"),
                             new Keyword("nation"),
@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   lastFilter: string = '';
 
   ngOnInit() {
-    this.filteredKeywords = this.keyWords.valueChanges.pipe(
+    this.filteredKeywords = this.keywordControl.valueChanges.pipe(
       startWith<string | Keyword[]>(''),
       map(value => typeof value === 'string' ? value : this.lastFilter),
       map(filter => this.filter(filter))
@@ -41,7 +41,7 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-  displayFn(value: Keyword[] | string): string | undefined {
+  displayFn(value: Keyword[] | string): string{
     let displayValue: string;
     displayValue = ""
     if (Array.isArray(value)) {
@@ -68,6 +68,6 @@ export class HomePageComponent implements OnInit {
       this.selectedKeywords.splice(i, 1);
     }
 
-    this.keyWords.setValue(this.selectedKeywords);
+    this.keywordControl.setValue(this.selectedKeywords);
   }
 }

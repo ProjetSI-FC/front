@@ -11,6 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -26,7 +27,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     BrowserAnimationsModule,
     MatFormFieldModule, 
     MatSelectModule,
-    MatAutocompleteModule, 
+    MatAutocompleteModule,
+    MatCheckboxModule, 
     FormsModule, 
     ReactiveFormsModule, 
     NgIf, 
