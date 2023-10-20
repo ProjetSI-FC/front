@@ -25,5 +25,5 @@ jobs:
         run: npm install
 
       - name: Format code with Prettier
-        run: npx prettier --write "**/*.js"
+        run: npx prettier --write "**/*.ts"
 
