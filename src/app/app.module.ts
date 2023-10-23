@@ -17,6 +17,6 @@ import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.co
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
