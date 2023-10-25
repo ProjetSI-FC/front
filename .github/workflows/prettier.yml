@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["dev"]
+    branches: ['dev']
   pull_request:
-    branches: ["dev"]
+    branches: ['dev']
 
 jobs:
   format:
@@ -26,3 +26,6 @@ jobs:
 
       - name: Format code with Prettier
         run: npx prettier --write "**/*.ts"
+
+      - name: Lint code with ESLint
+        run: npx eslint --ext .ts ./
