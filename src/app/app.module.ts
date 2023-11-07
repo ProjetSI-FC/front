@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.component';
+import { SearchbarComponent } from './shared-component/searchbar/searchbar.component';
 
 
 
@@ -23,6 +24,7 @@ import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.co
     AppComponent,
     HomePageComponent,
     SecondaryPageComponent,
+    SearchbarComponent,
   ],
   imports: [
     BrowserModule,

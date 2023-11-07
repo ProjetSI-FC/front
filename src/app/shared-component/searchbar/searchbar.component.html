@@ -1,0 +1,28 @@
+<form>
+	<mat-form-field class="keywords">
+	  <mat-label>Keywords</mat-label>
+	  <mat-chip-grid #chipGrid aria-label="Keywords selection">
+		<mat-chip-row *ngFor="let keyword of selectedKeywords" (removed)="remove(keyword)">
+		  {{keyword}}
+		  <button matChipRemove [attr.aria-label]="'remove ' + keyword">
+			<mat-icon>cancel</mat-icon>
+		  </button>
+		</mat-chip-row>
+	  </mat-chip-grid>
+	  <input placeholder="New Keyword..." #keywordInput [formControl]="keywordCtrl"
+		[matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+		[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+		(matChipInputTokenEnd)="add($event)"/>
+	  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+		<mat-option *ngFor="let keyword of filteredKeywords | async" [value]="keyword">
+		  {{keyword}}
+		</mat-option>
+	  </mat-autocomplete>
+	</mat-form-field>
+  </form>
+  <div class = "cross-button">
+    <button mat-icon-button matTooltip="Basic" aria-label="Example icon-button with a heart icon">
+        <mat-icon svgIcon="crossIconPath">favorite</mat-icon>
+      </button>
+  </div>
+  
