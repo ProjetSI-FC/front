@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.component';
 import { SearchbarComponent } from './shared-component/searchbar/searchbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -32,6 +33,7 @@ import { SearchbarComponent } from './shared-component/searchbar/searchbar.compo
     BrowserAnimationsModule,
     MatFormFieldModule, 
     MatSelectModule,
+    HttpClientModule, 
     MatAutocompleteModule,
     MatCheckboxModule, 
     MatInputModule,

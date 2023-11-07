@@ -6,6 +6,8 @@ import { map, startWith } from 'rxjs/operators';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,13 +22,14 @@ export class SearchbarComponent {
   selectedKeywords: string[] = [];
   allKeywords : string[] = ['euro','Nation','macron','marine','politique','abcz','zouzou'];
   unselectedKeywords: string[] = this.allKeywords.slice();
-  crossIconPath: string = 'ressources\\images\\gray cross.svg'
+  crossIconPath: string = 'ressources/images/gray-cross.svg'
 
   @ViewChild('keywordInput') keywordInput!: ElementRef<HTMLInputElement>;
 
   announcer = inject(LiveAnnouncer);
 
-  constructor() {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon('crossIcon',sanitizer.bypassSecurityTrustResourceUrl(this.crossIconPath));
     this.filteredKeywords = this.keywordCtrl.valueChanges.pipe(
       startWith(null),
       map((keyword: string | null) => (keyword ? this.filter(keyword) : this.unselectedKeywords.slice().map(keyword => keyword.toLowerCase()).sort())),
