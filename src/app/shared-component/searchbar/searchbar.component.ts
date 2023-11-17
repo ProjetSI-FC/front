@@ -67,6 +67,13 @@ export class SearchbarComponent {
       this.announcer.announce(`Removed ${keyword}`);
     }
   }
+
+  removeAll() {
+    this.selectedKeywords.forEach(keyword => {
+      this.unselectedKeywords.push(keyword);
+    });
+    this.selectedKeywords = [];
+  }
  
   selected(event: MatAutocompleteSelectedEvent): void {
 
