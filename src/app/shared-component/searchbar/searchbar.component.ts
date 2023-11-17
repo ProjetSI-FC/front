@@ -6,14 +6,14 @@ import { map, startWith } from 'rxjs/operators';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
-  styleUrls: ['./searchbar.component.scss']
+  styleUrls: ['./searchbar.component.scss'],
 })
 export class SearchbarComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -22,7 +22,7 @@ export class SearchbarComponent {
   selectedKeywords: string[] = [];
   allKeywords : string[] = ['euro','Nation','macron','marine','politique','abcz','zouzou'];
   unselectedKeywords: string[] = this.allKeywords.slice();
-  crossIconPath: string = 'ressources/images/gray-cross.svg'
+  crossIconPath: string = 'src/app/assets/img/gray-cross.svg'
 
   @ViewChild('keywordInput') keywordInput!: ElementRef<HTMLInputElement>;
 
@@ -67,7 +67,7 @@ export class SearchbarComponent {
       this.announcer.announce(`Removed ${keyword}`);
     }
   }
-
+ 
   selected(event: MatAutocompleteSelectedEvent): void {
 
     const keyword = event.option.viewValue

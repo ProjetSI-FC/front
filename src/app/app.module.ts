@@ -17,7 +17,9 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.component';
 import { SearchbarComponent } from './shared-component/searchbar/searchbar.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -47,6 +49,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatAutocompleteModule,
     ReactiveFormsModule,
     AsyncPipe,
+    MatIconModule, 
+    MatIconModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
