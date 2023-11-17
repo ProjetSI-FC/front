@@ -1,27 +1,30 @@
-<form>
-	<mat-form-field class="keywords">
-	  <mat-label>Keywords</mat-label>
-	  <mat-chip-grid #chipGrid aria-label="Keywords selection">
-		<mat-chip-row *ngFor="let keyword of selectedKeywords" (removed)="remove(keyword)">
-		  {{keyword}}
-		  <button matChipRemove [attr.aria-label]="'remove ' + keyword">
-			<mat-icon>cancel</mat-icon>
-		  </button>
-		</mat-chip-row>
-	  </mat-chip-grid>
-	  <input placeholder="New Keyword..." #keywordInput [formControl]="keywordCtrl"
-		[matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-		[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-		(matChipInputTokenEnd)="add($event)"/>
-	  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-		<mat-option *ngFor="let keyword of filteredKeywords | async" [value]="keyword">
-		  {{keyword}}
-		</mat-option>
-	  </mat-autocomplete>
-	</mat-form-field>
-</form>
-	<button mat-icon-button class="grey-background" >
-		<mat-icon >close</mat-icon>
-	</button>
+<div class="flex-container">
+	<form>
+		<mat-form-field class="keywords">
+		  <mat-label>Keywords</mat-label>
+		  <mat-chip-grid #chipGrid aria-label="Keywords selection">
+			<mat-chip-row *ngFor="let keyword of selectedKeywords" (removed)="remove(keyword)">
+			  {{keyword}}
+			  <button matChipRemove [attr.aria-label]="'remove ' + keyword">
+				<mat-icon>cancel</mat-icon>
+			  </button>
+			</mat-chip-row>
+		  </mat-chip-grid>
+		  <input placeholder="New Keyword..." #keywordInput [formControl]="keywordCtrl"
+			[matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+			[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+			(matChipInputTokenEnd)="add($event)"/>
+		  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+			<mat-option *ngFor="let keyword of filteredKeywords | async" [value]="keyword">
+			  {{keyword}}
+			</mat-option>
+		  </mat-autocomplete>
+		</mat-form-field>
+	</form>
+		<button mat-raised-button class="btn-clean-field">
+			<mat-icon class="size-cross-icon">close</mat-icon>
+		</button>
+</div>
+
 		
   
