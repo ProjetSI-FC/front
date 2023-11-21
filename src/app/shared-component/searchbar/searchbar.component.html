@@ -1,4 +1,7 @@
 <div class="flex-container">
+	<button mat-icon-button class="btn-clean-field" (click)="removeAll()">
+		<mat-icon class="size-cross-icon">close</mat-icon>
+	</button>
 	<form>
 		<mat-form-field class="keywords">
 		  <mat-label>Keywords</mat-label>
@@ -21,9 +24,9 @@
 		  </mat-autocomplete>
 		</mat-form-field>
 	</form>
-		<button mat-raised-button class="btn-clean-field" (click)="removeAll()">
-			<mat-icon class="size-cross-icon">close</mat-icon>
-		</button>
+	<button mat-icon-button class="btn-search" (click)="goToPage2()">
+		<mat-icon class="size-magnifyingGlass-icon">search</mat-icon>
+	</button>
 </div>
 
 		

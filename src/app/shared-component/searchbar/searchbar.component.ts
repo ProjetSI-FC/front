@@ -8,6 +8,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class SearchbarComponent {
 
   announcer = inject(LiveAnnouncer);
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ,private router: Router) {
     iconRegistry.addSvgIcon('crossIcon',sanitizer.bypassSecurityTrustResourceUrl(this.crossIconPath));
     this.filteredKeywords = this.keywordCtrl.valueChanges.pipe(
       startWith(null),
@@ -56,7 +57,7 @@ export class SearchbarComponent {
         this.unselectedKeywords.splice(index, 1);
       }
     }
-}
+  }
 
   /** Remove a keyword */
   remove(keyword: string): void {
@@ -67,6 +68,10 @@ export class SearchbarComponent {
 
       this.announcer.announce(`Removed ${keyword}`);
     }
+  }
+
+  goToPage2(): void{
+    this.router.navigate(['/second']);
   }
 
   /** remove all keyword */
