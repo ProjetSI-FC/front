@@ -58,6 +58,7 @@ export class SearchbarComponent {
     }
 }
 
+  /** Remove a keyword */
   remove(keyword: string): void {
     const index = this.selectedKeywords.indexOf(keyword);
     this.unselectedKeywords.push(keyword);
@@ -68,6 +69,7 @@ export class SearchbarComponent {
     }
   }
 
+  /** remove all keyword */
   removeAll() {
     this.selectedKeywords.forEach(keyword => {
       this.unselectedKeywords.push(keyword);
@@ -76,7 +78,6 @@ export class SearchbarComponent {
   }
  
   selected(event: MatAutocompleteSelectedEvent): void {
-
     const keyword = event.option.viewValue
     const index = this.unselectedKeywords.indexOf(keyword);
     if (index >= 0) {
