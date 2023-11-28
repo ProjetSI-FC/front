@@ -58,7 +58,9 @@ jobs:
 
       - name: Link Chromium
         run: |
-          ln -s $RUNNER_TOOL_CACHE/chromium/chromium-browser /usr/bin/chromium-browser
+          if [ ! -e /usr/bin/chromium-browser ]; then
+            ln -s $RUNNER_TOOL_CACHE/chromium/chromium-browser /usr/bin/chromium-browser
+          fi
 
       - run: npm ci
 
