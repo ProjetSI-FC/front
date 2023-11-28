@@ -44,9 +44,24 @@ jobs:
 
       - run: npm run build --if-present
 
-      - name: Install Chrome Headless
+      - name: Cache Chromium
+        id: cache-chromium
+        run: |
+          mkdir -p $RUNNER_TOOL_CACHE/chromium
+          cp -r /usr/bin/chromium-browser $RUNNER_TOOL_CACHE/chromium/
+
+      - name: Install Chromium Headless
+        if: steps.cache-chromium.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y chromium-browser
+
+      - name: Link Chromium
+        run: |
+          ln -s $RUNNER_TOOL_CACHE/chromium/chromium-browser /usr/bin/chromium-browser
+
+      - run: npm ci
+
+      - run: npm run build --if-present
 
       - run: npm test -- --watch=false --browsers=ChromeHeadless
