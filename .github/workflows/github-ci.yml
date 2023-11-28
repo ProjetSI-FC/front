@@ -44,6 +44,8 @@ jobs:
 
       - run: npm run build --if-present
 
+      # To run the test, we use chromium bc we don't have a display
+      # We cache it to speed up the build and not install it every time
       - name: Cache Chromium
         id: cache-chromium
         run: |
@@ -51,10 +53,11 @@ jobs:
           cp -r /usr/bin/chromium-browser $RUNNER_TOOL_CACHE/chromium/
 
       - name: Install Chromium Headless
-        if: steps.cache-chromium.outputs.cache-hit != 'true'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
+          if [ ! -e /usr/bin/chromium-browser ]; then
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser
+          fi
 
       - name: Link Chromium
         run: |
