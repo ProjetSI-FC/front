@@ -1,0 +1,72 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: ['dev']
+  pull_request:
+    branches: ['dev']
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Format code with Prettier
+        run: npx prettier --write "**/*.ts"
+
+      - name: Lint code with ESLint
+        run: npx eslint --ext .ts ./
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm run build --if-present
+
+      # To run the test, we use chromium bc we don't have a display
+      # We cache it to speed up the build and not install it every time
+      - name: Cache Chromium
+        id: cache-chromium
+        run: |
+          mkdir -p $RUNNER_TOOL_CACHE/chromium
+          cp -r /usr/bin/chromium-browser $RUNNER_TOOL_CACHE/chromium/
+
+      - name: Install Chromium Headless
+        run: |
+          if [ ! -e /usr/bin/chromium-browser ]; then
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser
+          fi
+
+      - name: Link Chromium
+        run: |
+          if [ ! -e /usr/bin/chromium-browser ]; then
+            ln -s $RUNNER_TOOL_CACHE/chromium/chromium-browser /usr/bin/chromium-browser
+          fi
+
+      - run: npm ci
+
+      - run: npm run build --if-present
+
+      - run: npm test -- --watch=false --browsers=ChromeHeadless
