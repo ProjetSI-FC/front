@@ -6,7 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 

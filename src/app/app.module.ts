@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SecondaryPageComponent } from './pages/secondary-page/secondary-page.component';
 import { SearchbarComponent } from './shared-component/searchbar/searchbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
@@ -22,13 +21,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ResultPageComponent } from './pages/result-page/result-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    SecondaryPageComponent,
+    ResultPageComponent,
     SearchbarComponent,
   ],
   imports: [
