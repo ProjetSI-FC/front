@@ -40,8 +40,6 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - run: npm run build --if-present
-
       # To run the test, we use chromium bc we don't have a display
       # We cache it to speed up the build and not install it every time
       - name: Cache Chromium
