@@ -40,6 +40,10 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - run: npm ci
+
+      - run: npm run build
+
       # To run the test, we use chromium bc we don't have a display
       # We cache it to speed up the build and not install it every time
       - name: Cache Chromium
@@ -60,8 +64,6 @@ jobs:
           if [ ! -e /usr/bin/chromium-browser ]; then
             ln -s $RUNNER_TOOL_CACHE/chromium/chromium-browser /usr/bin/chromium-browser
           fi
-
-      - run: npm ci
 
       - run: npm run build --if-present
 
