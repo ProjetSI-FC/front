@@ -40,10 +40,6 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - run: npm install
-
-      - run: npm ci
-
       - run: npm run build --if-present
 
       # To run the test, we use chromium bc we don't have a display
