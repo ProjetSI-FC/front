@@ -1,22 +1,30 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { HomePageComponent } from './home-page.component'
+
+import { ResultPageComponent } from './result-page.component'
 import { SearchbarComponent } from 'src/app/shared-component/searchbar/searchbar.component'
+import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon'
+import { MatCard, MatCardMdImage, MatCardModule } from '@angular/material/card'
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field'
-import { MatChipGrid, MatChipsModule } from '@angular/material/chips'
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatChip, MatChipsModule } from '@angular/material/chips'
+import {
+  MatAutocomplete,
+  MatAutocompleteModule
+} from '@angular/material/autocomplete'
 import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent
-  let fixture: ComponentFixture<HomePageComponent>
+describe('ResultPageComponent', () => {
+  let component: ResultPageComponent
+  let fixture: ComponentFixture<ResultPageComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomePageComponent, SearchbarComponent],
+      declarations: [ResultPageComponent, SearchbarComponent],
       imports: [
         MatIconModule,
+        MatGridListModule,
+        MatCardModule,
         MatFormFieldModule,
         MatChipsModule,
         MatAutocompleteModule,
@@ -24,7 +32,7 @@ describe('HomePageComponent', () => {
         BrowserAnimationsModule
       ]
     })
-    fixture = TestBed.createComponent(HomePageComponent)
+    fixture = TestBed.createComponent(ResultPageComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
