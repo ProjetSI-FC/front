@@ -1,20 +1,20 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
-import { HomePageComponent } from './home-page.component'
-import { SearchbarComponent } from 'src/app/shared-component/searchbar/searchbar.component'
+
+import { SearchbarComponent } from './searchbar.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatChipsModule } from '@angular/material/chips'
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
-import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatChipsModule } from '@angular/material/chips'
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent
-  let fixture: ComponentFixture<HomePageComponent>
+describe('SearchbarComponent', () => {
+  let component: SearchbarComponent
+  let fixture: ComponentFixture<SearchbarComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomePageComponent, SearchbarComponent],
+      declarations: [SearchbarComponent],
       imports: [
         MatIconModule,
         MatFormFieldModule,
@@ -24,7 +24,7 @@ describe('HomePageComponent', () => {
         BrowserAnimationsModule
       ]
     })
-    fixture = TestBed.createComponent(HomePageComponent)
+    fixture = TestBed.createComponent(SearchbarComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
