@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 /* eslint-disable @typescript-eslint/indent */
+/* @typescript-eslint/space-before-function-paren */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
@@ -72,7 +73,6 @@ export class SearchbarComponent {
         }
       }
       // Clear the input value
-      event.chipInput!.clear()
       this.keywordCtrl.setValue(null)
 
       // Add our keyword
