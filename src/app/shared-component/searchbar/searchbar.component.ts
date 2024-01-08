@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/space-before-function-paren */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
@@ -50,6 +51,7 @@ export class SearchbarComponent {
       'crossIcon',
       sanitizer.bypassSecurityTrustResourceUrl(this.crossIconPath)
     )
+    
     this.filteredKeywords = this.keywordCtrl.valueChanges.pipe(
       startWith(null),
       map((keyword: string | null) =>
@@ -61,6 +63,7 @@ export class SearchbarComponent {
               .sort()
       )
     )
+    
   }
 
   add(event: MatChipInputEvent): void {
