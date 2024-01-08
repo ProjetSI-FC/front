@@ -1,4 +1,4 @@
-// eslint-disable-next-line typescript-eslint/consistent-type-imports
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
