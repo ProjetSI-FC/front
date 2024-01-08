@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
