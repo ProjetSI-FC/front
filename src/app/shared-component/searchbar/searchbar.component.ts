@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
+/* eslint-disable @typescript-eslint/indent */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
@@ -39,7 +40,7 @@ export class SearchbarComponent {
 
   announcer = inject(LiveAnnouncer)
 
-  constructor (
+  constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
     private readonly router: Router
