@@ -1,16 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ResultPageComponent } from './result-page.component'
 import { SearchbarComponent } from 'src/app/shared-component/searchbar/searchbar.component'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon'
-import { MatCard, MatCardMdImage, MatCardModule } from '@angular/material/card'
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field'
-import { MatChip, MatChipsModule } from '@angular/material/chips'
-import {
-  MatAutocomplete,
-  MatAutocompleteModule
-} from '@angular/material/autocomplete'
+import { MatCardModule } from '@angular/material/card'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 

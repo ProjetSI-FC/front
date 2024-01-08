@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { SearchbarComponent } from './searchbar.component'
 import { MatIconModule } from '@angular/material/icon'

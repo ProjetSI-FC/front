@@ -1,11 +1,11 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
-import { Component, ElementRef, ViewChild, inject } from '@angular/core'
+import { Component, type ElementRef, ViewChild, inject } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { Observable } from 'rxjs'
+import { type Observable } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
 import { LiveAnnouncer } from '@angular/cdk/a11y'
-import { MatChipInputEvent } from '@angular/material/chips'
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
+import { type MatChipInputEvent } from '@angular/material/chips'
+import { type MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -29,6 +29,7 @@ export class SearchbarComponent {
     'abcz',
     'zouzou'
   ]
+
   unselectedKeywords: string[] = this.allKeywords.slice()
   crossIconPath: string = 'src/app/assets/img/gray-cross.svg'
 
@@ -96,7 +97,7 @@ export class SearchbarComponent {
   }
 
   /** remove all keyword */
-  removeAll() {
+  removeAll(): void {
     this.selectedKeywords.forEach((keyword) => {
       this.unselectedKeywords.push(keyword)
     })
