@@ -39,10 +39,10 @@ export class SearchbarComponent {
 
   announcer = inject(LiveAnnouncer)
 
-  constructor(
+  constructor (
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private router: Router
+    private readonly router: Router
   ) {
     iconRegistry.addSvgIcon(
       'crossIcon',
