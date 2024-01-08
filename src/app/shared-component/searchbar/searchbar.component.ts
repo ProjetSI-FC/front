@@ -6,6 +6,7 @@ import { map, startWith } from 'rxjs/operators'
 import { LiveAnnouncer } from '@angular/cdk/a11y'
 import { type MatChipInputEvent } from '@angular/material/chips'
 import { type MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
+// eslint-disable-next-line no-use-before-define
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { Router } from '@angular/router'
