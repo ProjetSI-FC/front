@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { KeywordService } from 'src/app/services/keyword_service';
 
 @Component({
@@ -8,7 +9,7 @@ import { KeywordService } from 'src/app/services/keyword_service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  keywords: string[] = [];
+  keywords: Observable<string[]> | undefined;
   keywordService: KeywordService;
 
   constructor(private http: HttpClient) {
@@ -18,4 +19,5 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.keywords = this.keywordService.getAllKeywords();
   }
+
 }
