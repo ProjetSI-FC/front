@@ -17,7 +17,9 @@ export class HomePageComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.keywords = this.keywordService.getAllKeywords();
+    this.keywordService.getAllKeywords().subscribe(keywords => {
+      console.log(keywords);
+    });
   }
 
 }

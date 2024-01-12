@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
 @Injectable({
     providedIn: 'root'
 })
 export class KeywordService {
-    private keywordUrl = 'http://localhost:4200/browser'; // Replace with your Java API URL
+    
+    private keywordUrl = 'http://localhost:8080/browser'; // Replace with your Java API URL
 
     constructor(private http: HttpClient) { }
 
-    httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      };
-
     getAllKeywords(): Observable<string[]> {
+        console.log("getAllKeywords")
         const url = `${this.keywordUrl}/keywords`;
         return this.http.get<string[]>(url).pipe(
             tap(_ => this.log(`List of keywords sucessfully received`)),
