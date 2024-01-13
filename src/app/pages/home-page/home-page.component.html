@@ -1,4 +1,5 @@
 <div class="flex-container">
   <h1>Station TV</h1>
-  <app-searchbar></app-searchbar>
+  <app-searchbar *ngIf="keywordsList" [allKeywords]="keywordsList"></app-searchbar>
 </div>
+
