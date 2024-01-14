@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class KeywordService {
+export class ArticleService {
     
+    httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      };
+    
+
     private keywordUrl = 'http://localhost:8080/browser'; // Replace with your Java API URL
 
     constructor(private http: HttpClient) { }
 
-    getAllKeywords(): Observable<string[]> {
-        const url = `${this.keywordUrl}/keywords`;
-        return this.http.get<string[]>(url).pipe(
-            tap(_ => this.log(`List of keywords sucessfully received`)),
-            catchError(this.handleError<string[]>(`Error when trying to get list of keywords`))
-          );
-      ;
+    getResults(selected_keywords: string[]): Observable<string[]> {
+        const url = `${this.keywordUrl}/search`;
+        let queryParams = new HttpParams();
+        selected_keywords.forEach(keyword => {
+            queryParams = queryParams.append("keywords", keyword);
+        });
+        return this.http.get<string[]>(url, {params: queryParams}).pipe(
+            tap(_ => this.log(`Results articles successfully received`)),
+            catchError(this.handleError<string[]>(`Error when trying to get list of articles`))
+        );
     }
 
     /** Log a ArticleService message with the MessageService */

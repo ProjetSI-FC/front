@@ -15,6 +15,7 @@ import { type MatAutocompleteSelectedEvent } from '@angular/material/autocomplet
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { Router } from '@angular/router'
+import { ArticleService } from 'src/app/services/article_service'
 
 @Component({
   selector: 'app-searchbar',
@@ -38,7 +39,8 @@ export class SearchbarComponent implements OnInit {
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private readonly router: Router
+    private readonly router: Router,
+    private articleService: ArticleService,
   ) {
 
     iconRegistry.addSvgIcon(
@@ -53,7 +55,7 @@ export class SearchbarComponent implements OnInit {
           ? this.filter(keyword)
           : this.unselectedKeywords
               .slice()
-              .map((keyword) => keyword.toLowerCase())
+              .map((keyword) => keyword)
               .sort()
       )
     )
@@ -61,8 +63,8 @@ export class SearchbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.allKeywords)
     this.unselectedKeywords = this.allKeywords.slice()
+
   }
 
   add(event: MatChipInputEvent): void {
@@ -98,7 +100,10 @@ export class SearchbarComponent implements OnInit {
   }
 
   goToPage2(): void {
-    this.router.navigate(['/second'])
+    this.articleService.getResults(this.selectedKeywords).subscribe((articles) => {
+      console.log(articles)
+    })
+    // this.router.navigate(['/second'])
   }
 
   /** remove all keyword */
