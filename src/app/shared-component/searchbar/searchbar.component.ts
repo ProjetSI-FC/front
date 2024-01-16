@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
-import { Component, type ElementRef, ViewChild, inject, Input, OnInit } from '@angular/core'
+import { Component, type ElementRef, ViewChild, inject, Input, OnInit, ChangeDetectorRef } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { type Observable } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
@@ -26,7 +26,7 @@ export class SearchbarComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA]
   keywordCtrl = new FormControl('')
   filteredKeywords: Observable<string[]>
-  selectedKeywords: string[] = []
+  @Input() selectedKeywords: string[] = []
   @Input() allKeywords: string[] = []
 
   unselectedKeywords: string[] = [];
@@ -42,6 +42,8 @@ export class SearchbarComponent implements OnInit {
     private readonly router: Router,
     private articleService: ArticleService,
   ) {
+
+    
 
     iconRegistry.addSvgIcon(
       'crossIcon',
@@ -64,7 +66,6 @@ export class SearchbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.unselectedKeywords = this.allKeywords.slice()
-
   }
 
   add(event: MatChipInputEvent): void {
@@ -101,9 +102,8 @@ export class SearchbarComponent implements OnInit {
 
   goToPage2(): void {
     this.articleService.getResults(this.selectedKeywords).subscribe((articles) => {
-      console.log(articles)
-    })
-    // this.router.navigate(['/second'])
+      this.router.navigate(['/second'], { state: { articles } });
+    });
   }
 
   /** remove all keyword */
